@@ -1,38 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+1. pages/index.js -> Starting point of Next.js Project
 
-## Getting Started
+2. nesting routes
 
-First, run the development server:
+  Ex. pages/blog/index.js 
+  http://localhost:3000/blog -> blog page
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+  Ex. pages/blog/first.js 
+  http://localhost:3000/blog/first -> first blog page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. dynamic routes
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  Ex. pages/product/[productId].js
+  http://localhost:3000/product/1 -> Product detail page for particular product 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+  Note -> if you have dynamic page but if you have specific routes with dynamic page first it will call specific page -> http://localhost:3000/product/categories
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+4. nested dynamic routes
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  Ex. pages/items/[itemId]/review/[reviewId].js
+  http://localhost:3000/items/itemId/review/reviewId -> item review with reviewId for particular item
+  http://localhost:3000/items/1/review/9
 
-## Learn More
+5. Catch all routes
 
-To learn more about Next.js, take a look at the following resources:
+  1. Ex. pages/docs/[...params].js
+  http://localhost:3000/docs/feature1/concept1 -> it showing feature1 with concept1
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  http://localhost:3000/docs/feature1 -> it showing all feature1
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  2. Optional Catch all routes
+  Ex. pages/docs/[[...params]].js
+  http://localhost:3000/docs -> docs home page
 
-## Deploy on Vercel
+6. Nevigate route with UI -> use Link tag
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+7. Pre-rendering & Data fetching
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  pre-rending -> means render in advance of sending it to the browser
+
+  Types of pre-rending 
+    1. Static Generation
+      - without data
+      - with data
+      - Incremantal Static Generation
+      - dynamic parameters when fetching data
+
+    2. Server-side Rendering
+      - data fetcing
+
+  Client-side data fetcing 
+  
+  Comnining pre-rendering with client-side data fetching 
